@@ -1,0 +1,89 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: qa
+
+---
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: Chiefy22!
+    url: jdbc:mysql://localhost:3306/dcbapp-dev
+    username: root
+  devtools:
+    restart:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to HacAtac page!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: Chiefy22!
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+    username: root
+  devtools:
+    restart:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to HacAtac page!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: Chiefy22!
+    url: jdbc:mysql://localhost:3306/dcbapp-prod
+    username: root
+  devtools:
+    restart:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to HacAtac page!
